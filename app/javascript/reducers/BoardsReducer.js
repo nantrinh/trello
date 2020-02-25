@@ -18,5 +18,5 @@ export default function boardsReducer(state = [], action) {
 
 // fetchBoardSuccess returns only boards, without lists
 // create listsReducer that handles FETCH_BOARD_SUCCESS, returns only lists
-// create cardsReducer  that handles FETCH_BOARD_SUCCESS, returns only cards
+// create cardsReducer that handles FETCH_BOARD_SUCCESS, returns only cards
 // add state for lists and cards
