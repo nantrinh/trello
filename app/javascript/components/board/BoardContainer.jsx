@@ -5,21 +5,20 @@ class BoardContainer extends React.Component {
   componentDidMount() {
     const store = this.context.store;
     this.unsubscribe = store.subscribe(() => this.forceUpdate());
-    store.dispatch(actions.featchBoard());
+    store.dispatch(actions.fetchBoard());
   }
 
   componentWillUnmount() {
-    this.ubsubscribe();
+    this.unsubscribe();
   }
 
   board = () => {
     const store = this.context.store;
     return store.getState().board;
-  }
-
+  };
 
   render() {
-    <Board board={board} />
+    <Board board={board} />;
   }
 }
 
