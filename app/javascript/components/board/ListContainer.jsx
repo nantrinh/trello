@@ -23,12 +23,12 @@ const mapStateToProps = (state, ownProps) => {
 // };
 
 class ListContainer extends React.Component {
-  lists = this.props.lists.map(list => (
-    <List key={list.id} title={list.title} id={list.id} />
-  ));
-
   render() {
-    return this.lists;
+    const lists = this.props.lists.map(list => (
+      <List key={list.id} title={list.title} id={list.id} />
+    ));
+
+    return <div>{lists}</div>;
   }
 }
 

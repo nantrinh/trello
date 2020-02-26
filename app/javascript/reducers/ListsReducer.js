@@ -6,10 +6,10 @@ export default function listsReducer(state = [], action) {
 
     let { lists, ...boardWithoutLists } = action.board;
 
-    lists = lists.map(list => ({
-      title: list.title,
-      id: list.id
-    }));
+    lists = lists.map(list => {
+      const { cards, ...listWithoutCards } = list;
+      return listWithoutCards;
+    });
     return excludedLists.concat(lists);
   } else {
     return state;
