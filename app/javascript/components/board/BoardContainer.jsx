@@ -1,27 +1,21 @@
+import { connect } from "react-redux";
 import React from "react";
 import Board from "./Board";
 
-class BoardContainer extends React.Component {
-  componentDidMount() {
-    const store = this.context.store;
-    this.unsubscribe = store.subscribe(() => this.forceUpdate());
-    store.dispatch(actions.fetchBoard());
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  board = () => {
-    const store = this.context.store;
-    return store.getState().board;
+const mapStateToProps = (state, ownProps) => {
+  const id = Number(ownProps.match.params.id);
+  const matchingBoards = state.boards.filter(board => board.id === id);
+  return {
+    board: matchingBoards[0]
   };
+};
 
-  render() {
-    <Board board={board} />;
-  }
-}
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchBoard: () => {
+      store.dispatch(actions.fetchBoard()).catch(error => console.log(error)); // do we need this?
+    }
+  };
+};
 
-export default BoardContainer;
-
-// use 'connect' syntax instead of componentDidMount & componentWillUnmount
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

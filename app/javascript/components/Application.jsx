@@ -6,6 +6,8 @@ import TopNav from "./shared/TopNav";
 import BoardsDashboardContainer from "./dashboard/BoardsDashboardContainer";
 import BoardContainer from "./board/BoardContainer";
 
+import * as routes from "../constants/ApiRoutes";
+
 import { fetchBoards } from "../actions/BoardActions";
 
 class Application extends React.Component {
@@ -29,7 +31,11 @@ class Application extends React.Component {
       <div>
         <TopNav />
         <Route path="/" exact component={BoardsDashboardContainer} />
-        <Route path="/boards/:id" exact component={BoardContainer} />
+        <Route
+          path={routes.BOARD_SHOW_URL + ":id"}
+          exact
+          component={BoardContainer}
+        />
       </div>
     );
   }
