@@ -4,9 +4,9 @@ import Board from "./Board";
 
 const mapStateToProps = (state, ownProps) => {
   const id = Number(ownProps.match.params.id);
-  const matchingBoards = state.boards.filter(board => board.id === id);
+  const matchingBoard = state.boards.find(board => board.id === id);
   return {
-    board: matchingBoards[0]
+    board: matchingBoard
   };
 };
 
