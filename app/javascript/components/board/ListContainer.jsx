@@ -4,8 +4,9 @@ import List from "./List";
 import * as actions from "../../actions/BoardActions";
 
 const mapStateToProps = (state, ownProps) => {
-  const boardId = Number(ownProps.match.params.id);
+  const boardId = Number(ownProps.boardId);
   const matchingLists = state.lists.filter(list => list.board_id === boardId);
+  debugger;
 
   return {
     lists: matchingLists
@@ -22,12 +23,12 @@ const mapStateToProps = (state, ownProps) => {
 // };
 
 class ListContainer extends React.Component {
-  render() {
-    const lists = this.props.lists.map(list => (
-      <List key={list.id} title={list.title} id={list.id} />
-    ));
+  lists = this.props.lists.map(list => (
+    <List key={list.id} title={list.title} id={list.id} />
+  ));
 
-    return lists;
+  render() {
+    return this.lists;
   }
 }
 
