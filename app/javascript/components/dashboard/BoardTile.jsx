@@ -7,7 +7,7 @@ import * as routes from "../../constants/ApiRoutes";
 
 const BoardTile = props => (
   <li className="board-tile">
-    <Link to={routes.BOARD_SHOW_URL + props.id}>
+    <Link to={"/boards/" + props.id}>
       <span className="board-title">{props.title}</span>
     </Link>
   </li>
