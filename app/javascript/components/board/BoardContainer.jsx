@@ -26,6 +26,7 @@ class BoardContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props.board);
     if (this.props.board) {
       return <Board board={this.props.board} />;
     }
