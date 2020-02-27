@@ -3,8 +3,8 @@ class Api::ListsController < ApplicationController
 
 
   def create
-    @list = List.new(list_params)
     board = Board.find(params[:board_id])
+    @list = List.new(list_params.merge(board: board))
     @list.board_id = board.id
 
     if @list.save
