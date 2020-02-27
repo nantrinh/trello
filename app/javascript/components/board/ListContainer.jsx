@@ -3,13 +3,9 @@ import { connect } from "react-redux";
 import List from "./List";
 import * as actions from "../../actions/BoardActions";
 
-const mapStateToProps = (state, ownProps) => {
-  const boardId = Number(ownProps.boardId);
-  const matchingLists = state.lists.filter(list => list.board_id === boardId);
-  debugger;
-
+const mapStateToProps = state => {
   return {
-    lists: matchingLists
+    lists: state.lists
   };
 };
 
@@ -28,7 +24,11 @@ class ListContainer extends React.Component {
       <List key={list.id} title={list.title} id={list.id} />
     ));
 
-    return <div>{lists}</div>;
+    return (
+      <div id="existing-lists" className="existing-lists">
+        {lists}
+      </div>
+    );
   }
 }
 
