@@ -1,6 +1,10 @@
+
 class Api::ListsController < ApplicationController
+
+
   def create
     @list = List.new(list_params)
+    @list.board_id = params[:board_id]
 
     if @list.save
       render :create, status: :created
@@ -16,11 +20,14 @@ class Api::ListsController < ApplicationController
     render 'api/shared/error', status: :unprocessable_entity
   end
 
+  def update
+
+  end
+
   private
 
   def list_params
     params.require(:list).permit(:title)
-    params.require(:board_id)
   end
 
 end
