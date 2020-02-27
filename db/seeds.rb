@@ -14,8 +14,8 @@ board1 = Board.create title: "First board"
 list1 = List.create title: "first list", board: board1
 list2 = List.create title: "second list", board: board1
 
-card1 = Card.create title: "card 1 list 1", list: list1
-card2 = Card.create title: "card 2 list 1", list: list1
+card1 = Card.create title: "card 1 list 1", list: list1, description: "Cards do many cool things.", labels: ['green', 'yellow', 'red', 'orange', 'blue', 'purple'], due_date: 2.days.from_now
+card2 = Card.create title: "card 2 list 1", list: list1, description: "Cards do many cool things.", due_date: 5.days.from_now
 
 card1 = Card.create title: "card 1 list 2", list: list2
 card2 = Card.create title: "card 2 list 2", list: list2
