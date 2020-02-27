@@ -19,9 +19,7 @@ const Board = ({ board }) => {
       </header>
       <main>
         <div id="list-container" className="list-container">
-          <div id="existing-lists" className="existing-lists">
-            <ListContainer boardId={board.id} />
-          </div>
+          <ListContainer />
           <div id="new-list" className="new-list">
             <span>Add a list...</span>
             <input type="text" placeholder="Add a list..." />

@@ -34,15 +34,11 @@ const apiClient = {
       .catch(logError);
   },
   getBoard: function(id, callback) {
-    console.log(routes.BOARD_SHOW_URL + id);
-    return (
-      axios
-        // .get(routes.BOARD_SHOW_URL + id)
-        .get(`/api/boards/${id}`)
-        .then(unwrapData)
-        .then(callback)
-        .catch(logError)
-    );
+    return axios
+      .get(`/api/boards/${id}`)
+      .then(unwrapData)
+      .then(callback)
+      .catch(logError);
   }
 };
 
