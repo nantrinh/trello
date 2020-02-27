@@ -11,8 +11,9 @@ const mapStateToProps = state => {
 class CardsContainer extends React.Component {
   render() {
     const cards = this.props.cards
-      .filter(card => card.list_id === this.props.list_id)
+      .filter(card => card.list_id === Number(this.props.list_id))
       .map(card => <Card key={card.id} card={card} />);
+    // debugger;
     return (
       <div id="cards-container" data-id={`list-${this.props.list_id}-cards`}>
         {cards}

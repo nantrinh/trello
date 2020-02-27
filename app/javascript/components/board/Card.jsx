@@ -15,7 +15,7 @@ const Card = ({ card }) => {
     }
   }
   function check_description() {
-    if (card.description !== "") {
+    if (card.description) {
       return <i className="description-icon sm-icon"></i>;
     }
   }
@@ -24,7 +24,6 @@ const Card = ({ card }) => {
       return <i className="comment-icon sm-icon"></i>;
     }
   }
-
   return (
     <div className="card-background">
       <div className="card">
