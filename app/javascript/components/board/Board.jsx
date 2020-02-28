@@ -21,7 +21,7 @@ const Board = ({ board }) => {
       <main>
         <div id="list-container" className="list-container">
           <ListContainer />
-          <NewListContainer />
+          <NewListContainer boardId={board.id} />
         </div>
       </main>
     </div>

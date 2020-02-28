@@ -6,6 +6,8 @@ export default function listsReducer(state = [], action) {
       const { cards, ...listWithoutCards } = list;
       return listWithoutCards;
     });
+  } else if (action.type === "CREATE_LIST_SUCCESS") {
+    return [...state, action.list];
   } else {
     return state;
   }

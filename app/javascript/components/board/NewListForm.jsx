@@ -19,12 +19,19 @@ class NewListForm extends React.Component {
     });
   };
 
-  handleToggleVisibleForm = e => {
-    this.setState(prevState => ({ visible: !prevState.visible }));
+  handleOpenClick = e => {
+    this.setState({ visible: true });
+  };
+
+  handleCloseClick = e => {
+    e.stopPropagation();
+    this.setState({ visible: false });
   };
 
   handleSubmit = e => {
+    debugger;
     e.preventDefault();
+    this.props.onSubmit(this.state.title);
   };
 
   render() {
@@ -32,11 +39,12 @@ class NewListForm extends React.Component {
       <div
         id="new-list"
         className={`new-list ${this.state.visible ? "selected" : ""}`}
-        onClick={e => this.handleToggleVisibleForm(e)}
+        onClick={e => this.handleOpenClick(e)}
       >
         <span>Add a list...</span>
         <input
           type="text"
+          name="title"
           placeholder="Add a list..."
           value={this.state.title}
           onChange={e => this.handleChange(e)}
@@ -50,7 +58,7 @@ class NewListForm extends React.Component {
           />
           <i
             className="x-icon icon"
-            onClick={e => this.handleToggleVisibleForm(e)}
+            onClick={e => this.handleCloseClick(e)}
           ></i>
         </div>
       </div>
