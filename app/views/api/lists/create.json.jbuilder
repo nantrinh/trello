@@ -1,3 +1,1 @@
 json.merge! @list.attributes
-
-
