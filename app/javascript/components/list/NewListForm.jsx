@@ -61,7 +61,7 @@ class NewListForm extends React.Component {
             type="submit"
             className="button"
             value="Save"
-            onSubmit={this.handleSubmit}
+            onClick={this.handleSubmit}
           />
           <i className="x-icon icon" onClick={this.handleCloseClick}></i>
         </div>
