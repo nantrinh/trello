@@ -1,5 +1,5 @@
 import React from "react";
-import CardsContainer from "./CardsContainer";
+import CardsContainer from "../card/CardsContainer";
 
 const List = ({ title, id }) => {
   return (
