@@ -29,7 +29,6 @@ class NewListForm extends React.Component {
   };
 
   handleSubmit = e => {
-    debugger;
     e.preventDefault();
     this.props.onSubmit(this.state.title);
   };
@@ -54,7 +53,7 @@ class NewListForm extends React.Component {
             type="submit"
             className="button"
             value="Save"
-            onSubmit={e => this.handleSubmit(e)}
+            onClick={e => this.handleSubmit(e)}
           />
           <i
             className="x-icon icon"
