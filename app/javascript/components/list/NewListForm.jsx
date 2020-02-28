@@ -33,6 +33,13 @@ class NewListForm extends React.Component {
     this.props.onSubmit(this.state.title);
   };
 
+  handleKeyPressed = e => {
+    debugger;
+    if (e.key === "Enter") {
+      this.handleSubmit(e);
+    }
+  };
+
   render() {
     return (
       <div
@@ -47,6 +54,7 @@ class NewListForm extends React.Component {
           placeholder="Add a list..."
           value={this.state.title}
           onChange={e => this.handleChange(e)}
+          onKeyPress={this.handleKeyPressed}
         />
         <div>
           <input
