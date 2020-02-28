@@ -31,6 +31,7 @@ class NewListForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state.title);
+    this.state.title = "";
   };
 
   handleKeyPressed = e => {
