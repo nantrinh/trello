@@ -1,6 +1,6 @@
 import React from "react";
-import ListContainer from "./ListContainer";
-import NewListContainer from "./NewListContainer";
+import ListContainer from "../list/ListContainer";
+import NewListContainer from "../list/NewListContainer";
 
 const Board = ({ board }) => {
   return (
