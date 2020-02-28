@@ -11,11 +11,11 @@ class NewListForm extends React.Component {
   };
 
   handleChange = e => {
-    const property = e.target.name;
+    const name = e.target.name;
     const value = e.target.value;
 
     this.setState({
-      [property]: value
+      [name]: value
     });
   };
 
@@ -45,7 +45,7 @@ class NewListForm extends React.Component {
       <div
         id="new-list"
         className={`new-list ${this.state.visible ? "selected" : ""}`}
-        onClick={e => this.handleOpenClick(e)}
+        onClick={this.handleOpenClick}
       >
         <span>Add a list...</span>
         <input
@@ -61,12 +61,9 @@ class NewListForm extends React.Component {
             type="submit"
             className="button"
             value="Save"
-            onClick={e => this.handleSubmit(e)}
+            onSubmit={this.handleSubmit}
           />
-          <i
-            className="x-icon icon"
-            onClick={e => this.handleCloseClick(e)}
-          ></i>
+          <i className="x-icon icon" onClick={this.handleCloseClick}></i>
         </div>
       </div>
     );
