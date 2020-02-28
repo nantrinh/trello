@@ -1,5 +1,6 @@
 import React from "react";
 import ListContainer from "./ListContainer";
+import ToggleableListForm from "./ToggleableListForm";
 
 const Board = ({ board }) => {
   return (
@@ -20,14 +21,7 @@ const Board = ({ board }) => {
       <main>
         <div id="list-container" className="list-container">
           <ListContainer />
-          <div id="new-list" className="new-list">
-            <span>Add a list...</span>
-            <input type="text" placeholder="Add a list..." />
-            <div>
-              <input type="submit" className="button" value="Save" />
-              <i className="x-icon icon"></i>
-            </div>
-          </div>
+          <ToggleableListForm />
         </div>
       </main>
     </div>
