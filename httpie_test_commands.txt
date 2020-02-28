@@ -1,0 +1,4 @@
+http POST localhost:3000/api/boards <<< '{"board": {"title": "hello world"}}'
+http POST localhost:3000/api/lists <<< '{"board_id": 1, "list": {"title": "my list"}}'
+http PUT localhost:3000/api/lists/4 <<< '{"title": "updated title"}'
+http PATCH localhost:3000/api/lists/4 <<< '{"title": "another updated title"}'
