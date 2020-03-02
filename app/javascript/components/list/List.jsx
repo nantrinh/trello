@@ -1,5 +1,6 @@
 import React from "react";
 import CardsContainer from "../card/CardsContainer";
+import ListTitleContainer from "./ListTitleContainer";
 
 const List = ({ title, id, editing }) => {
   return (
@@ -8,11 +9,7 @@ const List = ({ title, id, editing }) => {
         <div className="list">
           <a className="more-icon sm-icon" href=""></a>
           <div>
-            {editing ? (
-              <input className="list-title">{title} </input>
-            ) : (
-              <p className="list-title">{title}</p>
-            )}
+            <ListTitleContainer title={title} listId={id} />
           </div>
           <div className="add-dropdown add-top">
             <div className="card"></div>
@@ -23,7 +20,7 @@ const List = ({ title, id, editing }) => {
             </div>
           </div>
 
-          <CardsContainer list_id={id} />
+          <CardsContainer listId={id} />
 
           <div className="add-dropdown add-bottom">
             <div className="card">

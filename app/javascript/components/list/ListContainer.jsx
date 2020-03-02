@@ -9,19 +9,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onSubmitForm: (title, callback) => {
-      dispatch(actions.updateList(ownProps.boardId, title, callback));
-    }
-  };
-};
-
 class ListContainer extends React.Component {
-  // state = {
-  //   editing: false
-  // };
-
   handleTitleClick = e => {};
 
   handleSubmit = (title, callback) => {
@@ -34,7 +22,6 @@ class ListContainer extends React.Component {
         key={list.id}
         title={list.title}
         id={list.id}
-        editing={this.state.editing}
         onTitleClick={this.handleTitleClick}
       />
     ));
@@ -47,4 +34,4 @@ class ListContainer extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListContainer);
+export default connect(mapStateToProps, null)(ListContainer);

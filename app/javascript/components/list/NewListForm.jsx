@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "../shared/TextInput";
+import Input from "../shared/Input";
 
 class NewListForm extends React.Component {
   state = {
@@ -16,6 +16,7 @@ class NewListForm extends React.Component {
   };
 
   handleSubmit = input => {
+    console.log("I'm firing");
     this.props.onSubmit(input, this.resetState);
   };
 

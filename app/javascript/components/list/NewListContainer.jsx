@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/ListActions";
-import ListForm from "./NewListForm";
+import NewListForm from "./NewListForm";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
@@ -17,7 +17,7 @@ class NewListContainer extends React.Component {
   };
 
   render() {
-    return <ListForm onSubmit={this.handleSubmit} />;
+    return <NewListForm onSubmit={this.handleSubmit} />;
   }
 }
 

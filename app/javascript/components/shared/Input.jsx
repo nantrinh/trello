@@ -36,6 +36,7 @@ class Input extends React.Component {
   render() {
     return (
       <input
+        className={this.props.className || ""}
         type={this.props.type}
         name={this.props.name}
         placeholder={this.props.placeholder}
