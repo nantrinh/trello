@@ -5,15 +5,15 @@ import NewListForm from "./NewListForm";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSubmitForm: title => {
-      dispatch(actions.createList(ownProps.boardId, title));
+    onSubmitForm: (title, callback) => {
+      dispatch(actions.createList(ownProps.boardId, title, callback));
     }
   };
 };
 
 class NewListContainer extends React.Component {
-  handleSubmit = title => {
-    this.props.onSubmitForm(title);
+  handleSubmit = (title, callback) => {
+    this.props.onSubmitForm(title, callback);
   };
 
   render() {

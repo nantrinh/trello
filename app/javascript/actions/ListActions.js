@@ -16,11 +16,12 @@ export function createList(board_id, title, callback) {
   };
 
   return function(dispatch) {
+    // NOTE: newList => {...} is a callback
     apiClient.createList(payload, newList => {
       dispatch(createListSuccess(newList));
 
       if (callback) {
-        callback(newList);
+        callback();
       }
     });
   };

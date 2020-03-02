@@ -6,6 +6,13 @@ class NewListForm extends React.Component {
     visible: false
   };
 
+  resetState = () => {
+    this.setState({
+      title: "",
+      visible: false
+    });
+  };
+
   handleToggleVisibleForm = () => {
     this.setState(prevState => ({ visible: !prevState.visible }));
   };
@@ -25,17 +32,16 @@ class NewListForm extends React.Component {
 
   handleCloseClick = e => {
     e.stopPropagation();
-    this.setState({ visible: false });
+    this.resetState();
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state.title);
-    this.state.title = "";
+    this.props.onSubmit(this.state.title, this.resetState);
+    // pass a callback to onSubmit to reset the state upon success
   };
 
   handleKeyPressed = e => {
-    debugger;
     if (e.key === "Enter") {
       this.handleSubmit(e);
     }
