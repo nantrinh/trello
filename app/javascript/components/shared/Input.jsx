@@ -23,7 +23,7 @@ class Input extends React.Component {
 
   handleKeyPress = e => {
     if (e.key === "Enter") {
-      e.target.blur();
+      this.props.onSubmit(this.state.input, this.resetState);
     }
   };
 
@@ -41,7 +41,6 @@ class Input extends React.Component {
         placeholder={this.props.placeholder}
         value={this.state.input}
         onChange={this.handleChange}
-        onBlur={this.handleSubmit}
         onKeyPress={this.handleKeyPress}
       />
     );

@@ -6,11 +6,11 @@ class NewListForm extends React.Component {
     visible: false
   };
 
-  handleOpenClick = e => {
+  handleOpen = e => {
     this.setState({ visible: true });
   };
 
-  handleCloseClick = e => {
+  handleClose = e => {
     e.stopPropagation();
     this.setState({ visible: false });
   };
@@ -24,7 +24,8 @@ class NewListForm extends React.Component {
       <div
         id="new-list"
         className={`new-list ${this.state.visible ? "selected" : ""}`}
-        onClick={this.handleOpenClick}
+        onClick={this.handleOpen}
+        onBlur={this.handleClose}
       >
         <span>Add a list...</span>
         <Input
@@ -41,7 +42,7 @@ class NewListForm extends React.Component {
             value="Save"
             onClick={this.handleSubmit}
           />
-          <i className="x-icon icon" onClick={this.handleCloseClick}></i>
+          <i className="x-icon icon" onClick={this.handleClose}></i>
         </div>
       </div>
     );
