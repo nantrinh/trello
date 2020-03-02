@@ -1,29 +1,9 @@
 import React from "react";
+import Input from "../shared/TextInput";
 
 class NewListForm extends React.Component {
   state = {
-    title: "",
     visible: false
-  };
-
-  resetState = () => {
-    this.setState({
-      title: "",
-      visible: false
-    });
-  };
-
-  handleToggleVisibleForm = () => {
-    this.setState(prevState => ({ visible: !prevState.visible }));
-  };
-
-  handleChange = e => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    this.setState({
-      [name]: value
-    });
   };
 
   handleOpenClick = e => {
@@ -32,19 +12,11 @@ class NewListForm extends React.Component {
 
   handleCloseClick = e => {
     e.stopPropagation();
-    this.resetState();
+    this.setState({ visible: false });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.onSubmit(this.state.title, this.resetState);
-    // pass a callback to onSubmit to reset the state upon success
-  };
-
-  handleKeyPressed = e => {
-    if (e.key === "Enter") {
-      this.handleSubmit(e);
-    }
+  handleSubmit = input => {
+    this.props.onSubmit(input, this.resetState);
   };
 
   render() {
@@ -55,14 +27,13 @@ class NewListForm extends React.Component {
         onClick={this.handleOpenClick}
       >
         <span>Add a list...</span>
-        <input
+        <Input
           type="text"
           name="title"
           placeholder="Add a list..."
-          value={this.state.title}
-          onChange={e => this.handleChange(e)}
-          onKeyPress={this.handleKeyPressed}
+          onSubmit={this.handleSubmit}
         />
+
         <div>
           <input
             type="submit"

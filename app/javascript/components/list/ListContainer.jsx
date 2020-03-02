@@ -9,19 +9,34 @@ const mapStateToProps = state => {
   };
 };
 
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//   const boardId = Number(ownProps.match.params.id);
-//   return {
-//     onFetchBoard: () => {
-//       dispatch(actions.fetchBoard(id)).catch(error => console.log(error)); // do we need this?
-//     }
-//   };
-// };
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onSubmitForm: (title, callback) => {
+      dispatch(actions.updateList(ownProps.boardId, title, callback));
+    }
+  };
+};
 
 class ListContainer extends React.Component {
+  // state = {
+  //   editing: false
+  // };
+
+  handleTitleClick = e => {};
+
+  handleSubmit = (title, callback) => {
+    this.props.onSubmitForm(title, callback);
+  };
+
   render() {
     const lists = this.props.lists.map(list => (
-      <List key={list.id} title={list.title} id={list.id} />
+      <List
+        key={list.id}
+        title={list.title}
+        id={list.id}
+        editing={this.state.editing}
+        onTitleClick={this.handleTitleClick}
+      />
     ));
 
     return (
@@ -32,4 +47,4 @@ class ListContainer extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, null)(ListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ListContainer);
