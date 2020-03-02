@@ -12,10 +12,7 @@ class CardsContainer extends React.Component {
   render() {
     const cards = this.props.cards
       .filter(card => card.list_id === Number(this.props.list_id))
-      .map(card => (
-        <Card key={this.props.list_id + String(card.id)} card={card} />
-      ));
-    // debugger;
+      .map(card => <Card key={card.id} card={card} />);
     return (
       <div id="cards-container" data-id={`list-${this.props.list_id}-cards`}>
         {cards}
