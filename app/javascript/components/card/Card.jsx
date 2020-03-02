@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = ({ card }) => {
   const labels = card.labels.map(label => (
-    <div className={`card-label ${label} colorblindable`}></div>
+    <div key={label} className={`card-label ${label} colorblindable`}></div>
   ));
 
   function check_due_date() {
