@@ -15,9 +15,8 @@ class NewListForm extends React.Component {
     this.setState({ visible: false });
   };
 
-  handleSubmit = input => {
-    console.log("I'm firing");
-    this.props.onSubmit(input, this.resetState);
+  handleSubmit = (input, callback) => {
+    this.props.onSubmit(input, callback);
   };
 
   render() {

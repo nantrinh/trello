@@ -14,11 +14,10 @@ class Input extends React.Component {
   };
 
   handleChange = e => {
-    const name = e.target.name;
     const value = e.target.value;
 
     this.setState({
-      [name]: value
+      input: value
     });
   };
 
@@ -30,7 +29,7 @@ class Input extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state.input);
+    this.props.onSubmit(this.state.input, this.resetState);
   };
 
   render() {
