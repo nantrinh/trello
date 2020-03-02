@@ -27,14 +27,14 @@ class ListTitleContainer extends React.Component {
   render() {
     if (this.state.formVisible) {
       return (
-        <ListTitleForm
-          onSubmit={this.handleSubmit}
-          title={this.props.title}
-          onClick={this.handleOpenClick}
-        />
+        <ListTitleForm onSubmit={this.handleSubmit} title={this.props.title} />
       );
     } else {
-      return <p className="list-title">{this.props.title}</p>;
+      return (
+        <p className="list-title" onClick={this.handleOpenClick}>
+          {this.props.title}
+        </p>
+      );
     }
   }
 }
