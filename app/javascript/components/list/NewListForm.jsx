@@ -11,7 +11,6 @@ class NewListForm extends React.Component {
   };
 
   handleClose = e => {
-    e.stopPropagation();
     this.setState({ visible: false });
   };
 
@@ -25,7 +24,6 @@ class NewListForm extends React.Component {
         id="new-list"
         className={`new-list ${this.state.visible ? "selected" : ""}`}
         onClick={this.handleOpen}
-        onBlur={this.handleClose}
       >
         <span>Add a list...</span>
         <Input
@@ -33,6 +31,7 @@ class NewListForm extends React.Component {
           name="title"
           placeholder="Add a list..."
           onSubmit={this.handleSubmit}
+          onBlur={this.handleClose}
         />
 
         <div>
@@ -40,6 +39,8 @@ class NewListForm extends React.Component {
             type="submit"
             className="button"
             value="Save"
+            // onClick would not work here because we won't have title
+            // in the current state
             onClick={this.handleSubmit}
           />
           <i className="x-icon icon" onClick={this.handleClose}></i>
