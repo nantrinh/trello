@@ -28,7 +28,6 @@ class Input extends React.Component {
   };
 
   handleSubmit = e => {
-    // if blur event - check if it is blurrable.
     e.preventDefault();
     this.props.onSubmit(this.state.input, this.resetState);
   };
