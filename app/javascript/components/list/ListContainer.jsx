@@ -9,19 +9,21 @@ const mapStateToProps = state => {
   };
 };
 
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//   const boardId = Number(ownProps.match.params.id);
-//   return {
-//     onFetchBoard: () => {
-//       dispatch(actions.fetchBoard(id)).catch(error => console.log(error)); // do we need this?
-//     }
-//   };
-// };
-
 class ListContainer extends React.Component {
+  handleTitleClick = e => {};
+
+  handleSubmit = (title, callback) => {
+    this.props.onSubmitForm(title, callback);
+  };
+
   render() {
     const lists = this.props.lists.map(list => (
-      <List key={list.id} title={list.title} id={list.id} />
+      <List
+        key={list.id}
+        title={list.title}
+        id={list.id}
+        onTitleClick={this.handleTitleClick}
+      />
     ));
 
     return (

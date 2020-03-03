@@ -1,14 +1,15 @@
 import React from "react";
 import CardsContainer from "../card/CardsContainer";
+import ListTitleContainer from "./ListTitleContainer";
 
-const List = ({ title, id }) => {
+const List = ({ title, id, editing }) => {
   return (
     <div className="list-wrapper">
       <div className="list-background">
         <div className="list">
           <a className="more-icon sm-icon" href=""></a>
           <div>
-            <p className="list-title">{title}</p>
+            <ListTitleContainer title={title} listId={id} />
           </div>
           <div className="add-dropdown add-top">
             <div className="card"></div>
@@ -19,7 +20,7 @@ const List = ({ title, id }) => {
             </div>
           </div>
 
-          <CardsContainer list_id={id} />
+          <CardsContainer listId={id} />
 
           <div className="add-dropdown add-bottom">
             <div className="card">

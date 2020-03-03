@@ -1,50 +1,21 @@
 import React from "react";
+import Input from "../shared/Input";
 
 class NewListForm extends React.Component {
   state = {
-    title: "",
     visible: false
   };
 
-  resetState = () => {
-    this.setState({
-      title: "",
-      visible: false
-    });
-  };
-
-  handleToggleVisibleForm = () => {
-    this.setState(prevState => ({ visible: !prevState.visible }));
-  };
-
-  handleChange = e => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleOpenClick = e => {
+  handleOpen = e => {
     this.setState({ visible: true });
   };
 
-  handleCloseClick = e => {
-    e.stopPropagation();
-    this.resetState();
+  handleClose = e => {
+    this.setState({ visible: false });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.onSubmit(this.state.title, this.resetState);
-    // pass a callback to onSubmit to reset the state upon success
-  };
-
-  handleKeyPressed = e => {
-    if (e.key === "Enter") {
-      this.handleSubmit(e);
-    }
+  handleSubmit = (input, callback) => {
+    this.props.onSubmit(input, callback);
   };
 
   render() {
@@ -52,25 +23,27 @@ class NewListForm extends React.Component {
       <div
         id="new-list"
         className={`new-list ${this.state.visible ? "selected" : ""}`}
-        onClick={this.handleOpenClick}
+        onClick={this.handleOpen}
       >
         <span>Add a list...</span>
-        <input
+        <Input
           type="text"
           name="title"
           placeholder="Add a list..."
-          value={this.state.title}
-          onChange={e => this.handleChange(e)}
-          onKeyPress={this.handleKeyPressed}
+          onSubmit={this.handleSubmit}
+          onBlur={this.handleClose}
         />
+
         <div>
           <input
             type="submit"
             className="button"
             value="Save"
+            // onClick would not work here because we won't have title
+            // in the current state
             onClick={this.handleSubmit}
           />
-          <i className="x-icon icon" onClick={this.handleCloseClick}></i>
+          <i className="x-icon icon" onClick={this.handleClose}></i>
         </div>
       </div>
     );
