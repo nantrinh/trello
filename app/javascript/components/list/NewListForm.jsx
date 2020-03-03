@@ -3,7 +3,15 @@ import Input from "../shared/Input";
 
 class NewListForm extends React.Component {
   state = {
+    title: "",
     visible: false
+  };
+
+  resetState = () => {
+    this.setState({
+      title: "",
+      visible: false
+    });
   };
 
   handleOpen = e => {
@@ -11,11 +19,27 @@ class NewListForm extends React.Component {
   };
 
   handleClose = e => {
-    this.setState({ visible: false });
+    e.stopPropagation();
+    this.resetState();
   };
 
-  handleSubmit = (input, callback) => {
-    this.props.onSubmit(input, callback);
+  handleSubmit = e => {
+    this.props.onSubmit(this.state.title, this.resetState);
+  };
+
+  handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.handleSubmit();
+    }
   };
 
   render() {
@@ -23,15 +47,15 @@ class NewListForm extends React.Component {
       <div
         id="new-list"
         className={`new-list ${this.state.visible ? "selected" : ""}`}
-        onClick={this.handleOpen}
       >
-        <span>Add a list...</span>
-        <Input
+        <span onClick={this.handleOpen}>Add a list...</span>
+        <input
           type="text"
           name="title"
           placeholder="Add a list..."
-          onSubmit={this.handleSubmit}
-          onBlur={this.handleClose}
+          value={this.state.title}
+          onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
         />
 
         <div>
@@ -39,8 +63,6 @@ class NewListForm extends React.Component {
             type="submit"
             className="button"
             value="Save"
-            // onClick would not work here because we won't have title
-            // in the current state
             onClick={this.handleSubmit}
           />
           <i className="x-icon icon" onClick={this.handleClose}></i>
