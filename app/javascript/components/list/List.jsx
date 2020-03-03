@@ -1,10 +1,13 @@
 import React from "react";
 import CardsContainer from "../card/CardsContainer";
 import ListTitleContainer from "./ListTitleContainer";
+import NewCardFormContainer from "../card/NewCardFormContainer";
 
 const List = ({ title, id, editing }) => {
   return (
-    <div className="list-wrapper">
+    // className of this div needs to change based on whether the new card is being added or not
+    // <div className="list-wrapper">
+    <div className="list-wrapper add-dropdown-active">
       <div className="list-background">
         <div className="list">
           <a className="more-icon sm-icon" href=""></a>
@@ -21,8 +24,11 @@ const List = ({ title, id, editing }) => {
           </div>
 
           <CardsContainer listId={id} />
-
           <div className="add-dropdown add-bottom">
+            <NewCardFormContainer />
+          </div>
+
+          {/* <div className="add-dropdown add-bottom">
             <div className="card">
               <div className="card-info"></div>
               <textarea name="add-card"></textarea>
@@ -33,10 +39,7 @@ const List = ({ title, id, editing }) => {
             <div className="add-options">
               <span>...</span>
             </div>
-          </div>
-          <div className="add-card-toggle" data-position="bottom">
-            Add a card...
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
