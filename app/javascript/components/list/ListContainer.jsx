@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import List from "./List";
-import * as actions from "../../actions/BoardActions";
 
 const mapStateToProps = state => {
   return {
@@ -10,7 +9,14 @@ const mapStateToProps = state => {
 };
 
 class ListContainer extends React.Component {
-  handleTitleClick = e => {};
+  // changes based on which list is being added to
+  state = {
+    activeListId: null
+  };
+
+  handleActiveList = listId => {
+    this.setState({ activeListId: listId });
+  };
 
   handleSubmit = (title, callback) => {
     this.props.onSubmitForm(title, callback);
@@ -22,7 +28,9 @@ class ListContainer extends React.Component {
         key={list.id}
         title={list.title}
         id={list.id}
+        onActiveList={this.handleActiveList}
         onTitleClick={this.handleTitleClick}
+        active={this.state.activeListId === list.id}
       />
     ));
 
