@@ -3,13 +3,24 @@ import CardsContainer from "../card/CardsContainer";
 import ListTitleContainer from "./ListTitleContainer";
 import NewCardForm from "../card/NewCardForm";
 
-const List = ({ title, id, active, onActiveList, onInactiveList }) => {
+const List = ({
+  title,
+  id,
+  active,
+  onActiveList,
+  onInactiveList,
+  onSubmit
+}) => {
   const handleOpenClick = () => {
     onActiveList(id);
   };
 
   const handleCloseClick = () => {
     onInactiveList();
+  };
+
+  const handleSubmit = (cardTitle, callback) => {
+    onSubmit(id, cardTitle, callback);
   };
 
   return (
@@ -33,7 +44,11 @@ const List = ({ title, id, active, onActiveList, onInactiveList }) => {
 
           <CardsContainer listId={id} />
 
-          <NewCardForm active={active} onCloseClick={handleCloseClick} />
+          <NewCardForm
+            active={active}
+            onCloseClick={handleCloseClick}
+            onSubmit={handleSubmit}
+          />
           <div
             className="add-card-toggle"
             data-position="bottom"

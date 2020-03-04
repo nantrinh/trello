@@ -1,10 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import List from "./List";
+import * as actions from "../../actions/CardActions";
 
 const mapStateToProps = state => {
   return {
     lists: state.lists
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSubmitNewCardForm: (listId, title, callback) => {
+      dispatch(actions.createCard(listId, title, callback));
+    }
   };
 };
 
@@ -22,8 +31,8 @@ class ListContainer extends React.Component {
     this.setState({ activeListId: null });
   };
 
-  handleSubmit = (title, callback) => {
-    this.props.onSubmitForm(title, callback);
+  handleSubmit = (id, title, callback) => {
+    this.props.onSubmitNewCardForm(id, title, callback);
   };
 
   render() {
@@ -35,6 +44,7 @@ class ListContainer extends React.Component {
         onActiveList={this.handleActiveList}
         onInactiveList={this.handleInactiveList}
         onTitleClick={this.handleTitleClick}
+        onSubmit={this.handleSubmit}
         active={this.state.activeListId === list.id}
       />
     ));
@@ -47,4 +57,4 @@ class ListContainer extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, null)(ListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ListContainer);

@@ -26,8 +26,8 @@ class NewCardForm extends React.Component {
     }
   };
 
-  handleSubmit = callback => {
-    this.props.onSubmitForm(this.state.title, callback);
+  handleSubmit = () => {
+    this.props.onSubmit(this.state.title, this.handleClose);
   };
 
   handleClose = e => {
@@ -36,7 +36,6 @@ class NewCardForm extends React.Component {
   };
 
   render() {
-    console.log(this.props.active);
     return (
       <div
         className={`add-dropdown add-bottom ${
