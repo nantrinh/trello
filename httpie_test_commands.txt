@@ -3,4 +3,5 @@ http POST localhost:3000/api/lists <<< '{"board_id": 1, "list": {"title": "my li
 http PUT localhost:3000/api/lists/4 <<< '{"title": "updated title"}'
 http PATCH localhost:3000/api/lists/4 <<< '{"title": "another updated title"}'
 http POST localhost:3000/api/cards <<< '{"list_id": 113, "card": {"title": "my card"}}'
-http GET localhost:3000/api/cards/105
+http GET localhost:3000/api/cards/8
+http GET localhost:3000/api/boards/2
