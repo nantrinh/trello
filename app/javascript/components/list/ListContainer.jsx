@@ -18,6 +18,10 @@ class ListContainer extends React.Component {
     this.setState({ activeListId: listId });
   };
 
+  handleInactiveList = listId => {
+    this.setState({ activeListId: null });
+  };
+
   handleSubmit = (title, callback) => {
     this.props.onSubmitForm(title, callback);
   };
@@ -29,6 +33,7 @@ class ListContainer extends React.Component {
         title={list.title}
         id={list.id}
         onActiveList={this.handleActiveList}
+        onInactiveList={this.handleInactiveList}
         onTitleClick={this.handleTitleClick}
         active={this.state.activeListId === list.id}
       />

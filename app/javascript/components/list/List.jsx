@@ -3,9 +3,13 @@ import CardsContainer from "../card/CardsContainer";
 import ListTitleContainer from "./ListTitleContainer";
 import NewCardForm from "../card/NewCardForm";
 
-const List = ({ title, id, editing, active, onActiveList }) => {
+const List = ({ title, id, active, onActiveList, onInactiveList }) => {
   const handleOpenClick = () => {
     onActiveList(id);
+  };
+
+  const handleCloseClick = () => {
+    onInactiveList();
   };
 
   return (
@@ -29,7 +33,7 @@ const List = ({ title, id, editing, active, onActiveList }) => {
 
           <CardsContainer listId={id} />
 
-          <NewCardForm active={active} />
+          <NewCardForm active={active} onCloseClick={handleCloseClick} />
           <div
             className="add-card-toggle"
             data-position="bottom"

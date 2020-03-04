@@ -1,27 +1,63 @@
 import React from "react";
 
 class NewCardForm extends React.Component {
-  handleSubmit = (title, callback) => {
-    this.props.onSubmitForm(title, callback);
+  state = {
+    title: ""
+  };
+
+  resetState = () => {
+    this.setState({
+      title: ""
+    });
+  };
+
+  handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleKeyPress = e => {
+    if (e.key === "Enter") {
+      this.handleSubmit();
+    }
+  };
+
+  handleSubmit = callback => {
+    this.props.onSubmitForm(this.state.title, callback);
+  };
+
+  handleClose = e => {
+    this.props.onCloseClick();
+    this.resetState();
   };
 
   render() {
     console.log(this.props.active);
     return (
       <div
-        className={
-          this.props.active
-            ? "add-dropdown add-bottom active-card"
-            : "add-dropdown add-bottom"
-        }
+        className={`add-dropdown add-bottom ${
+          this.props.active ? "active-card" : ""
+        }`}
       >
         <div className="card">
           <div className="card-info"></div>
-          <input type="textarea" name="add-card" />
+          <input
+            type="textarea"
+            name="title"
+            value={this.state.title}
+            onChange={this.handleChange}
+            onKeyPress={this.handleKeyPress}
+          />
           <div className="members"></div>
         </div>
-        <a className="button">Add</a>
-        <i className="x-icon icon"></i>
+        <a className="button" onClick={this.handleSubmit}>
+          Add
+        </a>
+        <i className="x-icon icon" onClick={this.handleClose}></i>
         <div className="add-options">
           <span>...</span>
         </div>
