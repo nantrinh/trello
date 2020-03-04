@@ -1,6 +1,17 @@
 import React from "react";
 
-const CardModal = () => {
+const CardModal = ({ card, listTitle }) => {
+  const labels = card.labels.map(label => (
+    <div className="member-container" key={label}>
+      <div className={`${label} label colorblindable`}></div>
+    </div>
+  ));
+
+  const isPastDue = () => {
+    // card.due_date
+    // returns "past due" or nothing
+  };
+
   return (
     <div id="modal-container">
       <div className="screen"></div>
@@ -11,10 +22,10 @@ const CardModal = () => {
           <textarea
             className="list-title"
             style={{ height: "45px" }}
-            value="cards do stuff"
+            value={card.title}
           ></textarea>
           <p>
-            in list <a className="link">Stuff to try (this is a list)</a>
+            in list <a className="link">{listTitle}</a>
             <i className="sub-icon sm-icon"></i>
           </p>
         </header>
@@ -24,24 +35,7 @@ const CardModal = () => {
               <ul className="modal-details-list">
                 <li className="labels-section">
                   <h3>Labels</h3>
-                  <div className="member-container">
-                    <div className="green label colorblindable"></div>
-                  </div>
-                  <div className="member-container">
-                    <div className="yellow label colorblindable"></div>
-                  </div>
-                  <div className="member-container">
-                    <div className="orange label colorblindable"></div>
-                  </div>
-                  <div className="member-container">
-                    <div className="blue label colorblindable"></div>
-                  </div>
-                  <div className="member-container">
-                    <div className="purple label colorblindable"></div>
-                  </div>
-                  <div className="member-container">
-                    <div className="red label colorblindable"></div>
-                  </div>
+                  {labels}
                   <div className="member-container">
                     <i className="plus-icon sm-icon"></i>
                   </div>
@@ -55,7 +49,8 @@ const CardModal = () => {
                       className="checkbox"
                       checked=""
                     />
-                    Aug 4 at 10:42 AM <span>(past due)</span>
+                    {card.due_date}
+                    <span>{isPastDue()}(past due)</span>
                   </div>
                 </li>
               </ul>
@@ -64,9 +59,7 @@ const CardModal = () => {
                 <span id="description-edit" className="link">
                   Edit
                 </span>
-                <p className="textarea-overlay">
-                  Cards have a symbol to indicate if they contain a description.
-                </p>
+                <p className="textarea-overlay">{card.description}</p>
                 <p id="description-edit-options" className="hidden">
                   You have unsaved edits on this field.{" "}
                   <span className="link">View edits</span> -{" "}
