@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ card }) => {
   const labels = card.labels.map(label => (
@@ -25,20 +26,22 @@ const Card = ({ card }) => {
     }
   }
   return (
-    <div className="card-background">
-      <div className="card">
-        <i className="edit-toggle edit-icon sm-icon"></i>
-        <div className="card-info">
-          {labels}
-          <p>{card.title}</p>
-        </div>
-        <div className="card-icons">
-          {check_due_date()}
-          {check_description()}
-          {check_comments()}
+    <Link to={"/cards/" + card.id}>
+      <div className="card-background">
+        <div className="card">
+          <i className="edit-toggle edit-icon sm-icon"></i>
+          <div className="card-info">
+            {labels}
+            <p>{card.title}</p>
+          </div>
+          <div className="card-icons">
+            {check_due_date()}
+            {check_description()}
+            {check_comments()}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import TopNav from "./shared/TopNav";
 import BoardsDashboardContainer from "./dashboard/BoardsDashboardContainer";
 import BoardContainer from "./board/BoardContainer";
+import CardModalContainer from "./card/CardModalContainer";
 
 import * as routes from "../constants/ApiRoutes";
 
@@ -32,6 +33,7 @@ class Application extends React.Component {
         <TopNav />
         <Route path="/" exact component={BoardsDashboardContainer} />
         <Route path={"/boards/:id"} exact component={BoardContainer} />
+        <Route path={"/cards/:id"} exact component={CardModalContainer} />
       </div>
     );
   }

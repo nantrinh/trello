@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const id = Number(ownProps.match.params.id);
   return {
     onFetchBoard: () => {
-      dispatch(actions.fetchBoard(id)); //.catch(error => console.log(error)); // do we need this?
+      dispatch(actions.fetchBoard(id));
     }
   };
 };
