@@ -1,31 +1,24 @@
 import React from "react";
 import ListContainer from "../list/ListContainer";
 import NewListContainer from "../list/NewListContainer";
+import BoardHeader from "./BoardHeader";
 
-const Board = ({ board }) => {
-  return (
-    <div>
-      <header>
-        <ul>
-          <li id="title">{board.title}</li>
-          <li className="star-icon icon"></li>
-          <li className="private private-icon icon">Private</li>
-        </ul>
-        <div className="menu">
-          <i className="more-icon sm-icon"></i>Show Menu
-        </div>
-        <div className="subscribed">
-          <i className="sub-icon sm-icon"></i>Subscribed
-        </div>
-      </header>
-      <main>
-        <div id="list-container" className="list-container">
-          <ListContainer boardId={board.id} />
-          <NewListContainer boardId={board.id} />
-        </div>
-      </main>
-    </div>
-  );
-};
+class Board extends React.Component {
+  render() {
+    console.log("in render", this.props.boardId);
+
+    return (
+      <div>
+        <BoardHeader title={this.props.board.title} />
+        <main>
+          <div id="list-container" className="list-container">
+            <ListContainer boardId={this.props.board.id} />
+            <NewListContainer boardId={this.props.board.id} />
+          </div>
+        </main>
+      </div>
+    );
+  }
+}
 
 export default Board;
