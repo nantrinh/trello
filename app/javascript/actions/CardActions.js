@@ -14,7 +14,7 @@ export function createCard(list_id, title, callback) {
   };
 
   return function(dispatch) {
-    // NOTE: newList => {...} is a callback
+    // NOTE: newCard=> {...} is a callback
     apiClient.createCard(payload, newCard => {
       dispatch(createCardSuccess(newCard));
 
@@ -35,25 +35,25 @@ export function fetchCard(id) {
   };
 }
 
-// export function updateListSuccess(list) {
-//   return { type: types.UPDATE_LIST_SUCCESS, list: list };
-// }
+export function updateCardSuccess(card) {
+  return { type: types.UPDATE_CARD_SUCCESS, card: card };
+}
 
-// export function updateList(listId, title, callback) {
-//   const payload = {
-//     list: {
-//       title
-//     }
-//   };
+export function updateCardTitle(cardId, title, callback) {
+  const payload = {
+    card: {
+      title
+    }
+  };
 
-//   return function(dispatch) {
-//     // NOTE: newList => {...} is a callback
-//     apiClient.updateList(listId, payload, updatedList => {
-//       dispatch(updateListSuccess(updatedList));
+  return function(dispatch) {
+    // NOTE: newCard => {...} is a callback
+    apiClient.updateCard(cardId, payload, updatedCard => {
+      dispatch(updateCardSuccess(updatedCard));
 
-//       if (callback) {
-//         callback();
-//       }
-//     });
-//   };
-// }
+      if (callback) {
+        callback();
+      }
+    });
+  };
+}

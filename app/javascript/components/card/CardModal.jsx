@@ -1,4 +1,5 @@
 import React from "react";
+import CardTitleContainer from "./CardTitleContainer";
 
 const CardModal = ({ card, listTitle }) => {
   const labels = card.labels.map(label => (
@@ -19,11 +20,7 @@ const CardModal = ({ card, listTitle }) => {
         <i className="x-icon icon close-modal"></i>
         <header>
           <i className="card-icon icon .close-modal"></i>
-          <textarea
-            className="list-title"
-            style={{ height: "45px" }}
-            value={card.title}
-          ></textarea>
+          <CardTitleContainer title={card.title} cardId={card.id} />
           <p>
             in list <a className="link">{listTitle}</a>
             <i className="sub-icon sm-icon"></i>
