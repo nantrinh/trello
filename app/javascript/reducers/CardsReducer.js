@@ -20,6 +20,13 @@ export default function cardsReducer(state = [], action) {
 
       return card;
     });
+  } else if (action.type === "UPDATE_CARD_SUCCESS") {
+    return state.map(card => {
+      if (card.id === action.card.id) {
+        return action.card;
+      }
+      return card;
+    });
   } else {
     return state;
   }
