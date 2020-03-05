@@ -5,7 +5,7 @@ import ListTitleForm from "./ListTitleForm";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onSubmitForm: (title, callback) => {
+    onUpdateListTitle: (title, callback) => {
       dispatch(actions.updateList(ownProps.listId, title, callback));
     }
   };
@@ -21,7 +21,7 @@ class ListTitleContainer extends React.Component {
   };
 
   handleSubmit = (title, callback) => {
-    this.props.onSubmitForm(title, callback);
+    this.props.onUpdateListTitle(title, callback);
   };
 
   render() {
