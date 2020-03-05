@@ -12,7 +12,11 @@ const CardModal = ({ card, listTitle }) => {
         <Link to={`/boards/${card.board_id}`}>
           <i className="x-icon icon close-modal"></i>
         </Link>
-        <CardModalHeader cardTitle={card.title} listTitle={listTitle} />
+        <CardModalHeader
+          cardId={card.id}
+          cardTitle={card.title}
+          listTitle={listTitle}
+        />
         <CardModalMain card={card} />
         <CardModalSidebar />
       </div>
