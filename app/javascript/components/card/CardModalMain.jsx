@@ -1,16 +1,61 @@
 import React from "react";
+// import moment from "react-moment";
 
 const CardModalMain = ({ card }) => {
-  const isPastDue = () => {
-    // card.due_date
-    // returns "past due" or nothing
-  };
-
   const labels = card.labels.map(label => (
     <div className="member-container" key={label}>
       <div className={`${label} label colorblindable`}></div>
     </div>
   ));
+
+  // const formattedDueDate = card => {
+  //   const momentDate = moment(card.due_date);
+  //   let formatString;
+
+  //   if (momentDate.toDate().getFullYear() === new Date().getFullYear()) {
+  //     formatString = "MMM D [at] h:mm A";
+  //   } else {
+  //     formatString = "MMM D, YYYY [at] h:mm A";
+  //   }
+
+  //   let formatted = momentDate.format(formatString);
+
+  //   return `${formatted}${dueStatus(card)}`;
+  // };
+
+  // const dueClass = card => {
+  //   var diff =
+  //     (moment(card.due_date).toDate() - new Date()) / (1000 * 60 * 60 * 24);
+
+  //   if (card.completed) {
+  //     return "completed";
+  //   } else if (diff < -1) {
+  //     return "overdue";
+  //   } else if (diff < 0) {
+  //     return "overdue-recent";
+  //   } else if (diff < 1) {
+  //     return "due-soon";
+  //   } else {
+  //     return "due-later";
+  //   }
+  // };
+
+  // const dueStatus = card => {
+  //   var diff =
+  //     (moment(card.due_date).toDate() - new Date()) / (1000 * 60 * 60 * 24);
+
+  //   if (card.completed) {
+  //     return "";
+  //   } else if (diff < -1) {
+  //     return " (past due)";
+  //   } else if (diff < 0) {
+  //     return " (recently past due!)";
+  //   } else if (diff < 1) {
+  //     return " (due soon)";
+  //   } else {
+  //     return "";
+  //   }
+  // };
 
   return (
     <section className="modal-main">
@@ -24,19 +69,19 @@ const CardModalMain = ({ card }) => {
                 <i className="plus-icon sm-icon"></i>
               </div>
             </li>
-            <li className="due-date-section">
-              <h3>Due Date</h3>
-              <div id="dueDateDisplay" className="overdue completed">
-                <input
-                  id="dueDateCheckbox"
-                  type="checkbox"
-                  className="checkbox"
-                  checked=""
-                />
-                {card.due_date}
-                <span>{isPastDue()}(past due)</span>
-              </div>
-            </li>
+            {/* {props.card.due_date ? (
+              <li className="due-date-section">
+                <h3>Due Date</h3>
+                <div id="dueDateDisplay" className={dueClass(props.card)}>
+                  <input
+                    id="dueDateCheckbox"
+                    type="checkbox"
+                    className="checkbox"
+                  />
+                  {formattedDueDate(props.card)}
+                </div>
+              </li>
+            ) : null} */}
           </ul>
           <form className="description">
             <p>Description</p>
