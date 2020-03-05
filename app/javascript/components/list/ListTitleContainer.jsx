@@ -44,13 +44,13 @@ class ListTitleContainer extends React.Component {
       </div>
     );
 
-    const titleDisplay = <p className="list-title">{this.props.title}</p>;
-
-    return (
-      <div onClick={this.handleOpen}>
-        {this.state.formVisible ? inputForm : titleDisplay}
-      </div>
+    const titleDisplay = (
+      <p className="list-title" onClick={this.handleOpen}>
+        {this.props.title}
+      </p>
     );
+
+    return <div>{this.state.formVisible ? inputForm : titleDisplay}</div>;
   }
 }
 
