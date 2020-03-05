@@ -1,30 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { formattedDueDate, dueClass } from "../shared/MomentUtil";
 
 const Card = ({ card }) => {
   const labels = card.labels.map(label => (
     <div key={label} className={`card-label ${label} colorblindable`}></div>
   ));
 
-  function check_due_date() {
+  const check_due_date = () => {
     if (card.due_date) {
       return (
-        <i className="clock-icon sm-icon overdue-recent completed">
-          {card.due_date}
+        <i className={`clock-icon sm-icon ${dueClass(card)}`}>
+          {formattedDueDate(card)}
         </i>
       );
     }
-  }
-  function check_description() {
+  };
+  const check_description = () => {
     if (card.description) {
       return <i className="description-icon sm-icon"></i>;
     }
-  }
-  function check_comments() {
+  };
+  const check_comments = () => {
     if (card.comments_count > 0) {
       return <i className="comment-icon sm-icon"></i>;
     }
-  }
+  };
   return (
     <Link to={"/cards/" + card.id}>
       <div className="card-background">
