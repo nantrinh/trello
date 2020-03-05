@@ -1,13 +1,13 @@
 import React from "react";
 
-class Input extends React.Component {
+class SubmittableInput extends React.Component {
   state = {
     input: this.props.input || ""
   };
 
   resetState = () => {
     this.setState({
-      input: ""
+      input: this.props.input || ""
     });
   };
 
@@ -30,11 +30,6 @@ class Input extends React.Component {
     this.props.onSubmit(this.state.input, this.resetState);
   };
 
-  handleBlur = e => {
-    this.resetState();
-    this.props.onBlur();
-  };
-
   render() {
     return (
       <input
@@ -45,10 +40,10 @@ class Input extends React.Component {
         value={this.state.input}
         onChange={this.handleChange}
         onKeyPress={this.handleKeyPress}
-        onBlur={this.handleBlur}
+        onBlur={this.handleSubmit}
       />
     );
   }
 }
 
-export default Input;
+export default SubmittableInput;
