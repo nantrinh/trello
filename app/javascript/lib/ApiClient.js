@@ -21,49 +21,56 @@ axios.defaults.headers.common["Accept"] = "application/json";
 const apiClient = {
   getBoards: function(callback) {
     return axios
-      .get(routes.BOARDS_INDEX_URL)
+      .get(routes.BOARD_URL)
       .then(unwrapData)
       .then(callback)
       .catch(logError);
   },
   createBoard: function(board, callback) {
     return axios
-      .post(routes.CREATE_BOARD_URL, { board })
+      .post(routes.BOARD_URL, { board })
       .then(unwrapData)
       .then(callback)
       .catch(logError);
   },
   getBoard: function(id, callback) {
     return axios
-      .get(`/api/boards/${id}`)
+      .get(`${routes.BOARD_URL}/${id}`)
       .then(unwrapData)
       .then(callback)
       .catch(logError);
   },
   createList: function(payload, callback) {
     return axios
-      .post(routes.CREATE_LIST_URL, payload)
+      .post(routes.LIST_URL, payload)
       .then(unwrapData)
       .then(callback)
       .catch(logError);
   },
-  updateList: function(payload, listId, callback) {
+  updateList: function(payload, id, callback) {
     return axios
-      .put(`/api/lists/${listId}`, payload)
+      .put(`${routes.LIST_URL}/${id}`, payload)
       .then(unwrapData)
       .then(callback)
       .catch(logError);
   },
   createCard: function(payload, callback) {
     return axios
-      .post(routes.CREATE_CARD_URL, payload)
+      .post(routes.CARD_URL, payload)
       .then(unwrapData)
       .then(callback)
       .catch(logError);
   },
   getCard: function(id, callback) {
     return axios
-      .get(`/api/cards/${id}`)
+      .get(`${routes.CARD_URL}/${id}`)
+      .then(unwrapData)
+      .then(callback)
+      .catch(logError);
+  },
+  updateCard: function(payload, id, callback) {
+    return axios
+      .put(`${routes.CARD_URL}/${id}`, payload)
       .then(unwrapData)
       .then(callback)
       .catch(logError);
