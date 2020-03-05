@@ -6,6 +6,10 @@ class ListTitleForm extends React.Component {
     this.props.onSubmit(input);
   };
 
+  handleBlur = input => {
+    this.handleSubmit(input);
+  };
+
   render() {
     return (
       <div onClick={this.props.handleOpenClick}>
@@ -15,6 +19,7 @@ class ListTitleForm extends React.Component {
           name="title"
           input={this.props.title}
           onSubmit={this.handleSubmit}
+          onBlur={this.handleBlur}
         />
       </div>
     );
