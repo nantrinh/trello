@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CardModal = ({ card, listTitle }) => {
   const labels = card.labels.map(label => (
@@ -16,7 +17,9 @@ const CardModal = ({ card, listTitle }) => {
     <div id="modal-container">
       <div className="screen"></div>
       <div id="modal">
-        <i className="x-icon icon close-modal"></i>
+        <Link to={`/boards/${card.board_id}`}>
+          <i className="x-icon icon close-modal"></i>
+        </Link>
         <header>
           <i className="card-icon icon .close-modal"></i>
           <textarea
