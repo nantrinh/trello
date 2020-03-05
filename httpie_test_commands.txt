@@ -5,3 +5,22 @@ http PATCH localhost:3000/api/lists/4 <<< '{"title": "another updated title"}'
 http POST localhost:3000/api/cards <<< '{"list_id": 113, "card": {"title": "my card"}}'
 http GET localhost:3000/api/cards/8
 http GET localhost:3000/api/boards/2
+
+// create a card
+http POST localhost:3000/api/cards <<< '{"list_id": 133, "card": {"title": "testing multiple attributes", "labels":["red", "blue"]}}'
+
+// should return 200 with the updated card in json format
+http PUT localhost:3000/api/cards/117 <<< '{"card": {"title": "my updated card"}}'
+http PUT localhost:3000/api/cards/125 <<< '{"card": {"labels":["red"]}}'
+http PUT localhost:3000/api/cards/125 <<< '{"card": {"list_id": 133}}'
+http PUT localhost:3000/api/cards/125 <<< '{"card": {"archived": true}}'
+http PUT localhost:3000/api/cards/125 <<< '{"card": {"due_date": "2020-03-05T17:54:55.285Z"}}'
+http PUT localhost:3000/api/cards/125 <<< '{"card": {"completed": true}}'
+http PUT localhost:3000/api/cards/125 <<< '{"card": {"title": "this new task", "completed": false}}'
+
+// should return 404 with an error if card with this id does not exist
+http PUT localhost:3000/api/cards/1 <<< '{"card": {title: "hello world"}}'
+
+// should return 422 unprocessable entity with an error
+http PUT localhost:3000/api/cards/117 <<< '{"card": {}}'
+
