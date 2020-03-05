@@ -5,7 +5,6 @@ import BoardHeader from "./BoardHeader";
 
 class Board extends React.Component {
   render() {
-    console.log("in render", this.props.boardId);
 
     return (
       <div>

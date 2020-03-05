@@ -58,9 +58,7 @@ class BoardContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("before", this.props.boardId);
     if (this.props.boardId !== prevProps.boardId) {
-      console.log("in board", this.props.boardId);
       this.props.onFetchBoard(+this.props.boardId);
     }
   }
