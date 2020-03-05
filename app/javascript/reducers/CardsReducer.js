@@ -8,6 +8,19 @@ export default function cardsReducer(state = [], action) {
     });
   } else if (action.type === "CREATE_CARD_SUCCESS") {
     return [...state, action.card];
+  } else if (action.type === "FETCH_CARD_SUCCESS") {
+    console.log("in reducer:", action.card);
+    if (state.length === 0) {
+      return [action.card];
+    }
+
+    return state.map(card => {
+      if (card.id === action.card.id) {
+        return action.card;
+      }
+
+      return card;
+    });
   } else {
     return state;
   }

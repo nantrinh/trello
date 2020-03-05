@@ -30,6 +30,7 @@ class CardModalContainer extends Component {
   }
 
   render() {
+    console.log(this.props.card);
     if (this.props.card) {
       return (
         <CardModal card={this.props.card} listTitle={this.props.listTitle} />
