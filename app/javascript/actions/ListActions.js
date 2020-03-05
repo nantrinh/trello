@@ -31,7 +31,7 @@ export function updateListSuccess(list) {
   return { type: types.UPDATE_LIST_SUCCESS, list: list };
 }
 
-export function updateList(listId, title, callback) {
+export function updateListTitle(listId, title, callback) {
   const payload = {
     list: {
       title

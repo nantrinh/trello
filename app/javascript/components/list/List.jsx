@@ -30,9 +30,7 @@ const List = ({
       <div className="list-background">
         <div className="list">
           <a className="more-icon sm-icon" href=""></a>
-          <div>
-            <ListTitleContainer title={title} listId={id} />
-          </div>
+          <ListTitleContainer title={title} listId={id} />
           <div className="add-dropdown add-top">
             <div className="card"></div>
             <a className="button">Add</a>

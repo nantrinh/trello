@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions/ListActions";
-import ListTitleForm from "./ListTitleForm";
+import SubmittableInput from "../shared/SubmittableInput";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onUpdateListTitle: (title, callback) => {
-      dispatch(actions.updateList(ownProps.listId, title, callback));
+      dispatch(actions.updateListTitle(ownProps.listId, title, callback));
     }
   };
 };
@@ -16,26 +16,41 @@ class ListTitleContainer extends React.Component {
     formVisible: false
   };
 
-  handleOpenClick = e => {
+  handleOpen = e => {
     this.setState({ formVisible: true });
   };
 
+  handleClose = e => {
+    this.setState({ formVisible: false });
+  };
+
   handleSubmit = (title, callback) => {
-    this.props.onUpdateListTitle(title, callback);
+    this.props.onUpdateListTitle(title, () => {
+      callback();
+      this.handleClose();
+    });
   };
 
   render() {
-    if (this.state.formVisible) {
-      return (
-        <ListTitleForm onSubmit={this.handleSubmit} title={this.props.title} />
-      );
-    } else {
-      return (
-        <p className="list-title" onClick={this.handleOpenClick}>
-          {this.props.title}
-        </p>
-      );
-    }
+    const inputForm = (
+      <div>
+        <SubmittableInput
+          className="list-title"
+          type="text"
+          name="title"
+          input={this.props.title}
+          onSubmit={this.handleSubmit}
+        />
+      </div>
+    );
+
+    const titleDisplay = <p className="list-title">{this.props.title}</p>;
+
+    return (
+      <div onClick={this.handleOpen}>
+        {this.state.formVisible ? inputForm : titleDisplay}
+      </div>
+    );
   }
 }
 
