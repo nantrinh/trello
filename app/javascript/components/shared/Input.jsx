@@ -21,18 +21,16 @@ class Input extends React.Component {
 
   handleKeyPress = e => {
     if (e.key === "Enter") {
-      this.props.onSubmit(this.state.input, this.resetState);
+      this.handleSubmit();
     }
   };
 
   handleSubmit = e => {
-    e.preventDefault();
     this.props.onSubmit(this.state.input, this.resetState);
   };
 
   handleBlur = e => {
-    this.resetState();
-    this.props.onBlur();
+    this.handleSubmit();
   };
 
   render() {
