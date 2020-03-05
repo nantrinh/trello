@@ -13,6 +13,7 @@ const CardModal = ({ card, listTitle }) => {
     // returns "past due" or nothing
   };
 
+  console.log("card", card);
   return (
     <div id="modal-container">
       <div className="screen"></div>

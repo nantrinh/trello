@@ -7,11 +7,19 @@ import * as actions from "../../actions/CardActions";
 const mapStateToProps = (state, ownProps) => {
   const id = Number(ownProps.match.params.id);
   const matchingCard = state.cards.find(card => card.id === id);
-  const listTitle = state.lists.find(list => list.id === matchingCard.list_id);
-  return {
-    card: matchingCard,
-    listTitle: listTitle
-  };
+  const list = state.lists.find(list => list.id === matchingCard.list_id);
+
+  if (list) {
+    return {
+      card: matchingCard,
+      listTitle: list.title
+    };
+  } else {
+    return {
+      card: matchingCard,
+      listTitle: ""
+    };
+  }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -29,7 +37,7 @@ class CardModalContainer extends Component {
   }
 
   render() {
-    if (this.props.card) {
+    if (this.props.card && this.props.listTitle) {
       return (
         <CardModal card={this.props.card} listTitle={this.props.listTitle} />
       );
