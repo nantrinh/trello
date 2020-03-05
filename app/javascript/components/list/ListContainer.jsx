@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import List from "./List";
+import * as actions from "../../actions/CardActions";
 
 const mapStateToProps = state => {
   return {
