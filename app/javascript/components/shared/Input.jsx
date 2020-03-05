@@ -7,7 +7,7 @@ class Input extends React.Component {
 
   resetState = () => {
     this.setState({
-      input: ""
+      input: this.props.input || ""
     });
   };
 
@@ -29,10 +29,6 @@ class Input extends React.Component {
     this.props.onSubmit(this.state.input, this.resetState);
   };
 
-  handleBlur = e => {
-    this.handleSubmit();
-  };
-
   render() {
     return (
       <input
@@ -43,7 +39,7 @@ class Input extends React.Component {
         value={this.state.input}
         onChange={this.handleChange}
         onKeyPress={this.handleKeyPress}
-        onBlur={this.handleBlur}
+        onBlur={this.handleSubmit}
       />
     );
   }
