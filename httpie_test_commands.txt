@@ -19,7 +19,7 @@ http PUT localhost:3000/api/cards/125 <<< '{"card": {"completed": true}}'
 http PUT localhost:3000/api/cards/125 <<< '{"card": {"title": "this new task", "completed": false}}'
 
 // should return 404 with an error if card with this id does not exist
-http PUT localhost:3000/api/cards/1 <<< '{"card": {title: "hello world"}}'
+http PUT localhost:3000/api/cards/1 <<< '{"card": {"title": "hello world"}}'
 
 // should return 422 unprocessable entity with an error
 http PUT localhost:3000/api/cards/117 <<< '{"card": {}}'
