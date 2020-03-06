@@ -1,4 +1,5 @@
 import React from "react";
+import CardDescriptionContainer from "./CardDescriptionContainer";
 import { formattedDueDate, dueClass } from "../shared/MomentUtil";
 
 const CardModalMain = ({ card }) => {
@@ -34,18 +35,10 @@ const CardModalMain = ({ card }) => {
               </li>
             ) : null}
           </ul>
-          <form className="description">
-            <p>Description</p>
-            <span id="description-edit" className="link">
-              Edit
-            </span>
-            <p className="textarea-overlay">{card.description}</p>
-            <p id="description-edit-options" className="hidden">
-              You have unsaved edits on this field.{" "}
-              <span className="link">View edits</span> -{" "}
-              <span className="link">Discard</span>
-            </p>
-          </form>
+          <CardDescriptionContainer
+            cardId={card.id}
+            description={card.description}
+          />
         </li>
         <li className="comment-section">
           <h2 className="comment-icon icon">Add Comment</h2>
