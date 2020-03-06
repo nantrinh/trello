@@ -12,14 +12,6 @@ export default function cardsReducer(state = [], action) {
     if (state.length === 0) {
       return [action.card];
     }
-
-    return state.map(card => {
-      if (card.id === action.card.id) {
-        return action.card;
-      }
-
-      return card;
-    });
   } else if (action.type === "UPDATE_CARD_SUCCESS") {
     return state.map(card => {
       if (card.id === action.card.id) {

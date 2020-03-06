@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
     };
   } else {
     return {
-      card: matchingCard,
+      card: null,
       listTitle: ""
     };
   }
