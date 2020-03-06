@@ -1,19 +1,20 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
+import * as actions from "../../actions/CardActions";
+import CardDescriptionForm from "./CardDescriptionForm";
 
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//   return {
-//     onUpdateDescription: (description, callback) => {
-//       dispatch(
-//         actions.updateCardDescripion(ownProps.cardId, description, callback)
-//       );
-//     }
-//   };
-// };
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onUpdateDescription: (description, callback) => {
+      dispatch(
+        actions.updateCardDescription(ownProps.cardId, description, callback)
+      );
+    }
+  };
+};
 
 class CardDescriptionContainer extends Component {
   state = {
-    description: this.props.description || "",
     visible: false
   };
 
@@ -22,36 +23,22 @@ class CardDescriptionContainer extends Component {
   };
 
   handleClose = () => {
-    this.setState({ visible: false, description: this.props.description });
+    this.setState({ visible: false });
   };
 
-  handleChange = e => {
-    this.setState({
-      description: e.target.value
-    });
+  handleSubmit = description => {
+    this.props.onUpdateDescription(description, this.handleClose);
   };
-
-  handleSubmit = e => {};
 
   render() {
     if (this.state.visible) {
       return (
-        <form className="description">
-          <p>Description</p>
-          <textarea
-            className="textarea-toggle"
-            rows="1"
-            autoFocus
-            onChange={this.handleChange}
-            value={this.state.description}
-          />
-          <div>
-            <div className="button" value="Save" onClick={this.handleSubmit}>
-              Save
-            </div>
-            <i className="x-icon icon" onClick={this.handleClose}></i>
-          </div>
-        </form>
+        <CardDescriptionForm
+          cardId={this.props.cardId}
+          description={this.props.description}
+          onClose={this.handleClose}
+          onSubmit={this.handleSubmit}
+        />
       );
     } else {
       return (
@@ -78,4 +65,4 @@ class CardDescriptionContainer extends Component {
   }
 }
 
-export default CardDescriptionContainer;
+export default connect(null, mapDispatchToProps)(CardDescriptionContainer);
