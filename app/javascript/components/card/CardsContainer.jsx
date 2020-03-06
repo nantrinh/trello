@@ -13,7 +13,10 @@ const mapStateToProps = state => {
 class CardsContainer extends React.Component {
   componentDidMount() {
     var container = ReactDOM.findDOMNode(this);
-    dragula([container]);
+    dragula([container]).on("drop", e => {
+      // add stuff here based on srdjan's comments
+      console.log(`dropped at x: ${e.clientX} y: ${e.clientY}`);
+    });
   }
   render() {
     const cards = this.props.cards
