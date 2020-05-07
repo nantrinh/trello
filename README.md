@@ -2,7 +2,7 @@
 
 ![](gifs/trello.gif)
 
-# How to set up the application
+Setup Instructions
 
 - `bundle install`
 - `npm install`
