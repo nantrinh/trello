@@ -1,5 +1,7 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { connect } from "react-redux";
+import dragula from "react-dragula";
 import Card from "./Card";
 
 const mapStateToProps = state => {
@@ -9,6 +11,13 @@ const mapStateToProps = state => {
 };
 
 class CardsContainer extends React.Component {
+  componentDidMount() {
+    var container = ReactDOM.findDOMNode(this);
+    dragula([container]).on("drop", e => {
+      // add stuff here based on srdjan's comments
+      console.log(`dropped at x: ${e.clientX} y: ${e.clientY}`);
+    });
+  }
   render() {
     const cards = this.props.cards
       .filter(card => card.list_id === Number(this.props.listId))
