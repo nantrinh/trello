@@ -1,0 +1,9 @@
+yarn install
+rails db:migrate
+rails db:seed
+
+# list all branches
+git branch -a
+
+git checkout <desired_branch_name>
+
