@@ -1,6 +1,6 @@
 # Trello
 
-![](images/trello.png)
+![](gifs/trello.gif)
 
 # How to set up the application
 
