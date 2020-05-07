@@ -2,7 +2,7 @@ import React from "react";
 import { formattedDueDate, dueClass } from "../shared/MomentUtil";
 
 const CardModalMain = ({ card }) => {
-  const labels = card.labels.map(label => (
+  const labels = card.labels.map((label) => (
     <div className="member-container" key={label}>
       <div className={`${label} label colorblindable`}></div>
     </div>
@@ -97,9 +97,7 @@ const CardModalMain = ({ card }) => {
               </small>
               <div className="comment">
                 <label>
-                  <textarea required="" rows="1">
-                    The activities have not been implemented yet.
-                  </textarea>
+                  <textarea required="" rows="1"></textarea>
                   <div>
                     <a className="light-button card-icon sm-icon"></a>
                     <a className="light-button smiley-icon sm-icon"></a>
@@ -140,9 +138,7 @@ const CardModalMain = ({ card }) => {
               </small>
               <div className="comment">
                 <label>
-                  <textarea required="" rows="1">
-                    Example of a comment.
-                  </textarea>
+                  <textarea required="" rows="1"></textarea>
                   <div>
                     <a className="light-button card-icon sm-icon"></a>
                     <a className="light-button smiley-icon sm-icon"></a>
